@@ -2,9 +2,8 @@
 
 namespace Kernery\Assets;
 
-use Illuminate\Support\Arr;
 use Illuminate\Config\Repository;
-use Kernery\Assets\HtmlBuilder;
+use Illuminate\Support\Arr;
 
 class Assets
 {
@@ -74,7 +73,7 @@ class Assets
         foreach ((array) $assets as &$item) {
             $item = ltrim(trim($item), '/');
 
-            if (!in_array($item, $this->appendedStyles)) {
+            if (! in_array($item, $this->appendedStyles)) {
                 $this->appendedStyles[$item] = [
                     'src' => $item,
                     'attributes' => [],
@@ -95,7 +94,7 @@ class Assets
         foreach ((array) $assets as &$item) {
             $item = ltrim(trim($item), '/');
 
-            if (!in_array($item, $this->appendedScripts[$location])) {
+            if (! in_array($item, $this->appendedScripts[$location])) {
                 $this->appendedScripts[$location][$item] = [
                     'src' => $item,
                     'attributes' => [],
@@ -154,6 +153,7 @@ class Assets
 
     /**
      * Remove script/style items directly based on location (`header` or `footer`)
+     *
      * @param  string|array  $assets
      */
     public function removeItemDirectly($assets, ?string $location = null): self
@@ -184,7 +184,7 @@ class Assets
         foreach ($this->scripts as $script) {
             $configName = 'resources.scripts.' . $script;
 
-            if (!empty($location) && $location !== Arr::get($this->config, $configName . '.location')) {
+            if (! empty($location) && $location !== Arr::get($this->config, $configName . '.location')) {
                 continue; // Skip assets that don't match this location
             }
 
@@ -200,7 +200,7 @@ class Assets
     public function getStyles(array $lastStyles = []): array
     {
         $styles = [];
-        if (!empty($lastStyles)) {
+        if (! empty($lastStyles)) {
             $this->styles = array_merge($this->styles, $lastStyles);
         }
 
@@ -252,13 +252,13 @@ class Assets
     {
         $html = '';
 
-        if (!in_array($type, ['style', 'script'])) {
+        if (! in_array($type, ['style', 'script'])) {
             return $html;
         }
 
         $configName = 'resources.' . $type . 's.' . $name;
 
-        if (!Arr::has($this->config, $configName)) {
+        if (! Arr::has($this->config, $configName)) {
             return $html;
         }
 
@@ -276,7 +276,7 @@ class Assets
      */
     protected function getSourceUrl(string $configName)
     {
-        if (!Arr::has($this->config, $configName)) {
+        if (! Arr::has($this->config, $configName)) {
             return '';
         }
 
@@ -291,7 +291,7 @@ class Assets
 
     protected function isUsingCdn(string $configName): bool
     {
-        return Arr::get($this->config, $configName . '.use_cdn', false) && !$this->config['offline'];
+        return Arr::get($this->config, $configName . '.use_cdn', false) && ! $this->config['offline'];
     }
 
     protected function getSource(string $configName, ?string $location = null): array
@@ -305,7 +305,7 @@ class Assets
         $scripts = [];
 
         foreach ((array) $src as $s) {
-            if (!$s) {
+            if (! $s) {
                 continue;
             }
 
