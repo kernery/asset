@@ -1,4 +1,4 @@
-# Assets Manager for Kernery Application...
+## Assets manager for kernery application.
 
 <p align="center">
     <a href="https://packagist.org/packages/kernery/assets"><img src="https://img.shields.io/packagist/v/kernery/assets.svg?style=flat-square" alt="Latest Version"></a>
