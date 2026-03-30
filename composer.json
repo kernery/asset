@@ -1,5 +1,5 @@
 {
-    "name": "kernery/asset",
+    "name": "kernery/assets",
     "description": "Asset dependency for kernery core which helps to keep environment assets tidy and accessible.",
     "type": "package",
     "license": "MIT",
@@ -16,17 +16,17 @@
     "require-dev": {},
     "autoload": {
         "psr-4": {
-            "Kernery\\Asset\\": "src"
+            "Kernery\\Assets\\": "src"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Kernery\\Asset\\Providers\\AssetServiceProvider"
+                "Kernery\\Assets\\Providers\\AssetServiceProvider"
             ]
         },
         "aliases": {
-            "Asset": "Kernery\\Asset\\Facades\\AssetsFacade"
+            "Assets": "Kernery\\Assets\\Facades\\AssetsFacade"
         }
     },
     "config": {
