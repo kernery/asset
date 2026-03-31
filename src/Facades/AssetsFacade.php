@@ -3,12 +3,12 @@
 namespace Kernery\Assets\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Kernery\Assets\Assets as AssetsClass;
+use Kernery\Assets\Assets;
 
 class AssetsFacade extends Facade
 {
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
-        return AssetsClass::class;
+        return Assets::class;
     }
 }

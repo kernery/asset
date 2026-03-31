@@ -9,10 +9,14 @@ class AssetServiceProvider extends ServiceProvider
 {
     use LoadAndPublishDataTrait;
 
-    public function register(): void
+    public function boot(): void
     {
-        $this->setNamespace('modules/assets')
-            ->loadAndPublishConfigs('assets')
-            ->loadHelpers();
+        $this->mergeConfigFrom(__DIR__ . '/../../config/assets.php', 'assets');
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'assets');
+
+        if ($this->app->runningInConsole()) {
+            $this->publishes([__DIR__ . '/../../config/assets.php' => config_path('assets.php')], 'config');
+            $this->publishes([__DIR__ . '/../../resources/views' => resource_path('views/vendor/assets')], 'views');
+        }
     }
 }
