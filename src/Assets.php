@@ -118,6 +118,7 @@ class Assets
 
         foreach ((array) $assets as $rem) {
             $index = array_search($rem, $this->styles);
+
             if ($index === false) {
                 continue;
             }
@@ -141,6 +142,7 @@ class Assets
 
         foreach ((array) $assets as $rem) {
             $index = array_search($rem, $this->scripts);
+
             if ($index === false) {
                 continue;
             }
@@ -200,6 +202,7 @@ class Assets
     public function getStyles(array $lastStyles = []): array
     {
         $styles = [];
+
         if (! empty($lastStyles)) {
             $this->styles = array_merge($this->styles, $lastStyles);
         }
