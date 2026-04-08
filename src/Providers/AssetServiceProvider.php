@@ -5,12 +5,9 @@ namespace Kernery\Assets\Providers;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Kernery\Main\Facades\Assets;
-use Kernery\Main\Traits\LoadAndPublishDataTrait;
 
 class AssetServiceProvider extends ServiceProvider
 {
-    use LoadAndPublishDataTrait;
-
     public function boot(): void
     {
         $this->mergeConfigFrom(__DIR__ . '/../../config/assets.php', 'assets');
